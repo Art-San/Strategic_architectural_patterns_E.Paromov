@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Task } from "./use-tasks";
+import { Task } from "../../hooks/use-tasks";
 
 interface TaskTracking {
   activeTaskId: string | null;

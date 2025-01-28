@@ -1,22 +1,22 @@
-import { Track } from '../App'
-import styles from './tracks-actions.module.css'
+import { Track } from "./tracks-table";
+import styles from "./tracks-actions.module.css";
 
 export function TracksActions({
   onUpdateTrack,
   onDeleteTrack,
-  track
+  track,
 }: {
-  track: Track
-  onUpdateTrack: (track: Track) => void
-  onDeleteTrack: (trackId: string) => void
+  track: Track;
+  onUpdateTrack: (track: Track) => void;
+  onDeleteTrack: (trackId: string) => void;
 }) {
   return (
     <>
       <button
         className={styles.actionButton}
         onClick={(e) => {
-          e.stopPropagation()
-          onUpdateTrack(track)
+          e.stopPropagation();
+          onUpdateTrack(track);
         }}
         title="Edit"
       >
@@ -25,14 +25,13 @@ export function TracksActions({
       <button
         className={`${styles.actionButton} ${styles.deleteButton}`}
         onClick={(e) => {
-          e.preventDefault()
-          e.stopPropagation()
-          onDeleteTrack(track.id)
+          e.stopPropagation();
+          onDeleteTrack(track.id);
         }}
         title="Delete"
       >
         ×
       </button>
     </>
-  )
+  );
 }

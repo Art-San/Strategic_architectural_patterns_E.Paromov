@@ -1,4 +1,4 @@
-import { Track } from "../../App";
+import { Track } from "@/tracks-table";
 import styles from "./track-form.module.css";
 
 export function TrackForm({

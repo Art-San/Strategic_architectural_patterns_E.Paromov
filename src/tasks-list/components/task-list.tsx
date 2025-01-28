@@ -1,20 +1,18 @@
-import React from "react";
-import { useTasks } from "../hooks/use-tasks";
 import { useTasksFilters } from "../hooks/use-tasks-filters";
 import { useTaskTrack } from "../hooks/use-task-track";
-import { useNewTask } from "../hooks/use-new-task";
 import { TaskListLayout } from "./task-list-layout";
 import { TaskTracking } from "./task-tracking";
 import { NewTaskForm } from "./new-task-form";
 import { TaskFilters } from "./task-filters";
 import { TaskItem } from "./task-item";
-import { useTrackModalContext } from "../tracks-modal/shared/track-modal-context";
-import { AddTrackToCellModal } from "../tracks-modal";
-import { useTracks } from "../hooks/use-tracks";
+import { AddTrackToCellModal, useTracksModalOpen } from "@/tracks-modal";
+import { useTracks } from "@/tracks-table";
+import { useNewTask } from "../hooks/use-new-task";
+import { useTasks } from "../hooks/use-tasks";
 
 export const TaskList: React.FC = () => {
   const { trackCreate } = useTracks();
-  const { cellClick } = useTrackModalContext();
+  const { cellClick } = useTracksModalOpen();
   const { tasks, addTask, deleteTask, toggleDone } = useTasks();
   const { filteredTasks, filters } = useTasksFilters({
     tasks,
