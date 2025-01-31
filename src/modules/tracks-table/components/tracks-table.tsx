@@ -1,39 +1,39 @@
-import { TracksActions } from "./tracks-actions";
-import { TracksCell } from "./tracks-cell";
-import { TracksTaskRow } from "./tracks-task-row";
-import { TableTrack } from "./table-track";
-import { TracksSummaryRow } from "./tracks-summary-row";
-import { TracksDayHeadCell } from "./tracks-day-head-cell";
-import { TracksTableLayout } from "./tracks-table-layout";
-import { useTracks } from "../hooks/use-tracks";
-import { useTracksFilter } from "../hooks/use-tracks-filter";
-import { TracksFilters } from "./tracks-filters";
-import { useTracksTasks } from "../hooks/use-tracks-tasks";
-import { useTableComputing } from "../hooks/use-table-comuting";
-import { TableLayout } from "./table-layout";
-import { ActionButton } from "./action-button";
+import { TracksActions } from './tracks-actions'
+import { TracksCell } from './tracks-cell'
+import { TracksTaskRow } from './tracks-task-row'
+import { TableTrack } from './table-track'
+import { TracksSummaryRow } from './tracks-summary-row'
+import { TracksDayHeadCell } from './tracks-day-head-cell'
+import { TracksTableLayout } from './tracks-table-layout'
+import { useTracks } from '../hooks/use-tracks'
+import { useTracksFilter } from '../hooks/use-tracks-filter'
+import { TracksFilters } from './tracks-filters'
+import { useTracksTasks } from '../hooks/use-tracks-tasks'
+import { useTableComputing } from '../hooks/use-table-comuting'
+import { TableLayout } from './table-layout'
+import { ActionButton } from './action-button'
 import {
   useTracksModalOpen,
   TrackModalProvider,
   AddTrackModal,
   AddTrackToCellModal,
-  UpdateTrackModal,
-} from "@/tracks-modal";
+  UpdateTrackModal
+} from '@/modules/tracks-modal'
 
 const AppContent = () => {
-  const { trackCreate, trackDelete, trackUpdate, tracks } = useTracks();
+  const { trackCreate, trackDelete, trackUpdate, tracks } = useTracks()
   const { filteredTracks, filters, setFilters, visibleDays } = useTracksFilter({
-    tracks,
-  });
+    tracks
+  })
 
   const { uniqueTasks } = useTracksTasks({
-    tracks: filteredTracks,
-  });
+    tracks: filteredTracks
+  })
 
   const { getDayTotal, getDayTracks, getTaskTotal, getTotal } =
-    useTableComputing({ tracks: filteredTracks });
+    useTableComputing({ tracks: filteredTracks })
 
-  const { cellClick, createClick, trackClick } = useTracksModalOpen();
+  const { cellClick, createClick, trackClick } = useTracksModalOpen()
   return (
     <TableLayout>
       <TracksFilters
@@ -69,7 +69,7 @@ const AppContent = () => {
                   cellClick({
                     ...filters,
                     day,
-                    task,
+                    task
                   })
                 }
                 tracks={getDayTracks(day, task).map((track) => (
@@ -102,13 +102,13 @@ const AppContent = () => {
       <AddTrackToCellModal trackCreate={trackCreate} />
       <UpdateTrackModal trackUpdate={trackUpdate} />
     </TableLayout>
-  );
-};
+  )
+}
 
 export function TracksTable() {
   return (
     <TrackModalProvider>
       <AppContent />
     </TrackModalProvider>
-  );
+  )
 }

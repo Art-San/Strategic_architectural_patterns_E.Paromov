@@ -35,16 +35,13 @@ export default tseslint.config(
           pattern: 'router'
         },
         {
-          type: 'tasks-list',
-          pattern: 'tasks-list'
+          type: 'modules',
+          pattern: 'modules/*',
+          capture: ['module']
         },
         {
-          type: 'tracks-modal',
-          pattern: 'tracks-modal'
-        },
-        {
-          type: 'tracks-table',
-          pattern: 'tracks-table'
+          type: 'interfaces',
+          pattern: 'interfaces/*'
         }
       ],
       'import/resolver': {
@@ -60,8 +57,41 @@ export default tseslint.config(
           default: 'disallow',
           rules: [
             {
-              target: ['tracks-table', 'tasks-list', 'tracks-modal', 'router'],
+              target: ['modules', 'router'],
               allow: 'index.ts'
+            },
+            {
+              target: ['interfaces'],
+              allow: '*'
+            }
+          ]
+        }
+      ],
+      'boundaries/element-types': [
+        2,
+        {
+          // disallow importing any element by default
+          default: 'allow',
+          rules: [
+            {
+              from: ['interfaces'],
+              disallow: ['router', 'modules']
+            },
+            {
+              from: ['modules'],
+              disallow: ['router']
+            },
+            {
+              from: ['modules'],
+              message: 'Module must not import other module',
+              disallow: [
+                [
+                  'modules',
+                  {
+                    module: '!${module}'
+                  }
+                ]
+              ]
             }
           ]
         }

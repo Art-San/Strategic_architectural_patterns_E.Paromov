@@ -1,31 +1,31 @@
-import { useTasksFilters } from "../hooks/use-tasks-filters";
-import { useTaskTrack } from "../hooks/use-task-track";
-import { TaskListLayout } from "./task-list-layout";
-import { TaskTracking } from "./task-tracking";
-import { NewTaskForm } from "./new-task-form";
-import { TaskFilters } from "./task-filters";
-import { TaskItem } from "./task-item";
-import { AddTrackToCellModal, useTracksModalOpen } from "@/tracks-modal";
-import { useTracks } from "@/tracks-table";
-import { useNewTask } from "../hooks/use-new-task";
-import { useTasks } from "../hooks/use-tasks";
+import { useTasksFilters } from '../hooks/use-tasks-filters'
+import { useTaskTrack } from '../hooks/use-task-track'
+import { TaskListLayout } from './task-list-layout'
+import { TaskTracking } from './task-tracking'
+import { NewTaskForm } from './new-task-form'
+import { TaskFilters } from './task-filters'
+import { TaskItem } from './task-item'
+import { AddTrackToCellModal, useTracksModalOpen } from '@/modules/tracks-modal'
+import { useTracks } from '@/modules/tracks-table'
+import { useNewTask } from '../hooks/use-new-task'
+import { useTasks } from '../hooks/use-tasks'
 
 export const TaskList: React.FC = () => {
-  const { trackCreate } = useTracks();
-  const { cellClick } = useTracksModalOpen();
-  const { tasks, addTask, deleteTask, toggleDone } = useTasks();
+  const { trackCreate } = useTracks()
+  const { cellClick } = useTracksModalOpen()
+  const { tasks, addTask, deleteTask, toggleDone } = useTasks()
   const { filteredTasks, filters } = useTasksFilters({
-    tasks,
-  });
+    tasks
+  })
   const { handleAddTask, handleTaskTitleInputChange, newTaskTitle } =
-    useNewTask({ onAddTask: addTask });
+    useNewTask({ onAddTask: addTask })
 
   const {
     activeTask,
     currentTrackingTime,
     startTracking,
     stopTracking,
-    tracking,
+    tracking
   } = useTaskTrack({
     onTrack: ({ hours, task, startAt }) => {
       cellClick({
@@ -33,11 +33,11 @@ export const TaskList: React.FC = () => {
         selectedMonth: startAt.getMonth(),
         selectedYear: startAt.getFullYear(),
         task: task.title,
-        hours,
-      });
+        hours
+      })
     },
-    tasks,
-  });
+    tasks
+  })
 
   return (
     <TaskListLayout
@@ -75,5 +75,5 @@ export const TaskList: React.FC = () => {
         />
       ))}
     />
-  );
-};
+  )
+}
