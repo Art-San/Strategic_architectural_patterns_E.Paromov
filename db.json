@@ -62,6 +62,20 @@
       "task": "Testing",
       "hours": 2,
       "date": "2025-01-11"
+    },
+    {
+      "id": "PeC6RAR-c5tPqDTd2HPar",
+      "name": "kjfjig",
+      "task": "Testing",
+      "hours": 0.052,
+      "date": "2025-01-12"
+    },
+    {
+      "id": "MNVVPp8t3My3LyUHiHZjr",
+      "name": "tasn",
+      "task": "New Task 2",
+      "hours": 0.002,
+      "date": "2025-01-31"
     }
   ],
   "tasks": [

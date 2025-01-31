@@ -1,3 +1,4 @@
+import { TrackModalProvider as TrackModalProviderGlobal } from '@/interfaces/tracks-modal-context'
 import { trackModalContext } from './track-modal-context'
 import { useTrackModal } from './use-track-modal'
 
@@ -8,8 +9,10 @@ export function TrackModalProvider({
 }) {
   const trackModal = useTrackModal()
   return (
-    <trackModalContext.Provider value={trackModal}>
-      {children}
-    </trackModalContext.Provider>
+    <TrackModalProviderGlobal tracksModal={trackModal}>
+      <trackModalContext.Provider value={trackModal}>
+        {children}
+      </trackModalContext.Provider>
+    </TrackModalProviderGlobal>
   )
 }

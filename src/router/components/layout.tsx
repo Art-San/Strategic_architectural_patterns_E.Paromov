@@ -19,8 +19,8 @@ export const Layout = () => {
       </main>
 
       <AddTrackModal trackCreate={trackCreate} />
-      <AddTrackToCellModal trackCreate={trackCreate} />
       <UpdateTrackModal trackUpdate={trackUpdate} />
+      <AddTrackToCellModal trackCreate={trackCreate} />
     </div>
   )
 }

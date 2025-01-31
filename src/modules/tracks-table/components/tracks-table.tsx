@@ -12,7 +12,7 @@ import { useTracksTasks } from '../hooks/use-tracks-tasks'
 import { useTableComputing } from '../hooks/use-table-comuting'
 import { TableLayout } from './table-layout'
 import { ActionButton } from './action-button'
-import { useTracksModalOpen } from '@/modules/tracks-modal'
+import { useTrackModal } from '@/interfaces/tracks-modal-context'
 
 export const TracksTable = () => {
   const { trackDelete, tracks } = useTracks()
@@ -27,7 +27,7 @@ export const TracksTable = () => {
   const { getDayTotal, getDayTracks, getTaskTotal, getTotal } =
     useTableComputing({ tracks: filteredTracks })
 
-  const { cellClick, createClick, trackClick } = useTracksModalOpen()
+  const { cellClick, createClick, trackClick } = useTrackModal()
   return (
     <TableLayout>
       <TracksFilters

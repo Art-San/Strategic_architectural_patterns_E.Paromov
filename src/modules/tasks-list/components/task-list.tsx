@@ -5,12 +5,12 @@ import { TaskTracking } from './task-tracking'
 import { NewTaskForm } from './new-task-form'
 import { TaskFilters } from './task-filters'
 import { TaskItem } from './task-item'
-import { useTracksModalOpen } from '@/modules/tracks-modal'
+import { useTrackModal } from '@/interfaces/tracks-modal-context'
 import { useNewTask } from '../hooks/use-new-task'
 import { useTasks } from '../hooks/use-tasks'
 
 export const TaskList: React.FC = () => {
-  const { cellClick } = useTracksModalOpen()
+  const { cellClick } = useTrackModal()
   const { tasks, addTask, deleteTask, toggleDone } = useTasks()
   const { filteredTasks, filters } = useTasksFilters({
     tasks
