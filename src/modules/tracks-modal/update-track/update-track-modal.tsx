@@ -1,23 +1,23 @@
-import { Track } from "@/tracks-table";
-import { TrackForm } from "../shared/track-form";
-import { TrackModalView } from "../shared/track-modal";
-import { useTrackModalContext } from "../shared/track-modal-context";
-import { useUpdateTrackForm } from "./use-update-track-form";
+import { Track } from '../shared/types'
+import { TrackForm } from '../shared/track-form'
+import { TrackModalView } from '../shared/track-modal'
+import { useTrackModalContext } from '../shared/track-modal-context'
+import { useUpdateTrackForm } from './use-update-track-form'
 
 export function UpdateTrackModal({
-  trackUpdate,
+  trackUpdate
 }: {
-  trackUpdate: (track: Track) => Promise<void>;
+  trackUpdate: (track: Track) => Promise<void>
 }) {
-  const { close, isOpenModal, selectedTrack } = useTrackModalContext();
+  const { close, isOpenModal, selectedTrack } = useTrackModalContext()
 
   const { formData, handleInputChange, handleSubmit } = useUpdateTrackForm({
     selectedTrack,
     trackUpdate,
-    onSubmit: close,
-  });
+    onSubmit: close
+  })
 
-  if (!isOpenModal) return null;
+  if (!isOpenModal) return null
 
   return (
     <TrackModalView title="Update Track" close={close}>
@@ -28,5 +28,5 @@ export function UpdateTrackModal({
         onCancel={close}
       />
     </TrackModalView>
-  );
+  )
 }

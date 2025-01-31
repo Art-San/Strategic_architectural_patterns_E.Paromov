@@ -1,25 +1,25 @@
-import { Track } from "@/tracks-table";
-import styles from "./track-form.module.css";
+import { Track } from '../shared/types'
+import styles from './track-form.module.css'
 
 export function TrackForm({
   formData,
   onInputChange,
   onSubmit,
   onCancel,
-  submitText = "Add Track",
-  disabled = {},
+  submitText = 'Add Track',
+  disabled = {}
 }: {
-  formData: Omit<Track, "id">;
-  onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-  onCancel: () => void;
-  submitText?: string;
+  formData: Omit<Track, 'id'>
+  onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void
+  onCancel: () => void
+  submitText?: string
   disabled?: {
-    name?: boolean;
-    task?: boolean;
-    hours?: boolean;
-    date?: boolean;
-  };
+    name?: boolean
+    task?: boolean
+    hours?: boolean
+    date?: boolean
+  }
 }) {
   return (
     <form onSubmit={onSubmit} className={styles.form}>
@@ -85,11 +85,11 @@ export function TrackForm({
           type="button"
           className={styles.button}
           onClick={() => onCancel()}
-          style={{ backgroundColor: "#6c757d" }}
+          style={{ backgroundColor: '#6c757d' }}
         >
           Cancel
         </button>
       </div>
     </form>
-  );
+  )
 }

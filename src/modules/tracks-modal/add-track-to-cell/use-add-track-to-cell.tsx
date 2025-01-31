@@ -1,51 +1,51 @@
-import { useEffect } from "react";
-import { Track } from "@/tracks-table";
-import { useFormData } from "../shared/use-form-data";
-import { SelectedCell } from "../shared/types";
+import { useEffect } from 'react'
+import { Track } from '../shared/types'
+import { useFormData } from '../shared/use-form-data'
+import { SelectedCell } from '../shared/types'
 
 export function useAddTrackToCell({
   trackCreate,
   onSubmit,
-  selectedCell,
+  selectedCell
 }: {
-  trackCreate: (track: Omit<Track, "id">) => Promise<void>;
-  onSubmit?: () => void;
-  selectedCell: SelectedCell | null;
+  trackCreate: (track: Omit<Track, 'id'>) => Promise<void>
+  onSubmit?: () => void
+  selectedCell: SelectedCell | null
 }) {
   const { formData, handleInputChange, resetFormData, setFormData } =
-    useFormData();
+    useFormData()
 
   useEffect(() => {
     if (selectedCell) {
       setFormData({
-        name: "",
+        name: '',
         date: `${selectedCell.selectedYear}-${String(
           selectedCell.selectedMonth + 1
-        ).padStart(2, "0")}-${String(selectedCell.day).padStart(2, "0")}`,
+        ).padStart(2, '0')}-${String(selectedCell.day).padStart(2, '0')}`,
         task: selectedCell.task,
-        hours: selectedCell.hours ?? 0,
-      });
+        hours: selectedCell.hours ?? 0
+      })
     } else {
-      resetFormData();
+      resetFormData()
     }
-  }, [selectedCell]);
+  }, [selectedCell])
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
     trackCreate({
       name: formData.name,
       task: formData.task,
       hours: formData.hours,
-      date: formData.date,
+      date: formData.date
     }).finally(() => {
-      resetFormData();
-      onSubmit?.();
-    });
-  };
+      resetFormData()
+      onSubmit?.()
+    })
+  }
 
   return {
     formData,
     handleInputChange,
-    handleSubmit,
-  };
+    handleSubmit
+  }
 }

@@ -1,31 +1,31 @@
-import { Track } from "@/tracks-table";
-import { useFormData } from "../shared/use-form-data";
+import { Track } from '../shared/types'
+import { useFormData } from '../shared/use-form-data'
 
 export function useAddTrackForm({
   trackCreate,
-  onSubmit,
+  onSubmit
 }: {
-  trackCreate: (track: Omit<Track, "id">) => Promise<void>;
-  onSubmit?: () => void;
+  trackCreate: (track: Omit<Track, 'id'>) => Promise<void>
+  onSubmit?: () => void
 }) {
-  const { formData, handleInputChange, resetFormData } = useFormData();
+  const { formData, handleInputChange, resetFormData } = useFormData()
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
     trackCreate({
       name: formData.name,
       task: formData.task,
       hours: formData.hours,
-      date: formData.date,
+      date: formData.date
     }).finally(() => {
-      resetFormData();
-      onSubmit?.();
-    });
-  };
+      resetFormData()
+      onSubmit?.()
+    })
+  }
 
   return {
     formData,
     handleInputChange,
-    handleSubmit,
-  };
+    handleSubmit
+  }
 }

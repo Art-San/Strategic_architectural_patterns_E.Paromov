@@ -1,18 +1,18 @@
-import { useEffect } from "react";
-import { Track } from "@/tracks-table";
-import { useFormData } from "../shared/use-form-data";
+import { useEffect } from 'react'
+import { Track } from '../shared/types'
+import { useFormData } from '../shared/use-form-data'
 
 export function useUpdateTrackForm({
   selectedTrack,
   trackUpdate,
-  onSubmit,
+  onSubmit
 }: {
-  selectedTrack: Track | null;
-  trackUpdate: (track: Track) => Promise<void>;
-  onSubmit?: () => void;
+  selectedTrack: Track | null
+  trackUpdate: (track: Track) => Promise<void>
+  onSubmit?: () => void
 }) {
   const { formData, handleInputChange, resetFormData, setFormData } =
-    useFormData();
+    useFormData()
 
   useEffect(() => {
     if (selectedTrack) {
@@ -20,15 +20,15 @@ export function useUpdateTrackForm({
         name: selectedTrack.name,
         task: selectedTrack.task,
         hours: selectedTrack.hours,
-        date: selectedTrack.date,
-      });
+        date: selectedTrack.date
+      })
     } else {
-      resetFormData();
+      resetFormData()
     }
-  }, [selectedTrack]);
+  }, [selectedTrack])
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
 
     if (selectedTrack) {
       trackUpdate({
@@ -36,17 +36,17 @@ export function useUpdateTrackForm({
         name: formData.name,
         task: formData.task,
         hours: formData.hours,
-        date: formData.date,
+        date: formData.date
       }).finally(() => {
-        resetFormData();
-        onSubmit?.();
-      });
+        resetFormData()
+        onSubmit?.()
+      })
     }
-  };
+  }
 
   return {
     formData,
     handleInputChange,
-    handleSubmit,
-  };
+    handleSubmit
+  }
 }

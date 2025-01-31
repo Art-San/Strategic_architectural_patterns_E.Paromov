@@ -12,16 +12,10 @@ import { useTracksTasks } from '../hooks/use-tracks-tasks'
 import { useTableComputing } from '../hooks/use-table-comuting'
 import { TableLayout } from './table-layout'
 import { ActionButton } from './action-button'
-import {
-  useTracksModalOpen,
-  TrackModalProvider,
-  AddTrackModal,
-  AddTrackToCellModal,
-  UpdateTrackModal
-} from '@/modules/tracks-modal'
+import { useTracksModalOpen } from '@/modules/tracks-modal'
 
-const AppContent = () => {
-  const { trackCreate, trackDelete, trackUpdate, tracks } = useTracks()
+export const TracksTable = () => {
+  const { trackDelete, tracks } = useTracks()
   const { filteredTracks, filters, setFilters, visibleDays } = useTracksFilter({
     tracks
   })
@@ -97,18 +91,6 @@ const AppContent = () => {
           />
         }
       />
-
-      <AddTrackModal trackCreate={trackCreate} />
-      <AddTrackToCellModal trackCreate={trackCreate} />
-      <UpdateTrackModal trackUpdate={trackUpdate} />
     </TableLayout>
-  )
-}
-
-export function TracksTable() {
-  return (
-    <TrackModalProvider>
-      <AppContent />
-    </TrackModalProvider>
   )
 }
