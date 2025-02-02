@@ -1,15 +1,18 @@
 import { Track } from '../shared/types'
 import { TrackForm } from '../shared/track-form'
 import { TrackModalView } from '../shared/track-modal'
-import { useTrackModalContext } from '../shared/track-modal-context'
 import { useAddTrackToCell } from './use-add-track-to-cell'
+import { useTrackModal } from '../shared/use-track-modal'
+import { useEvent } from '@/interfaces/event-emmiter'
 
 export function AddTrackToCellModal({
   trackCreate
 }: {
   trackCreate: (track: Omit<Track, 'id'>) => Promise<void>
 }) {
-  const { close, isOpenModal, selectedCell } = useTrackModalContext()
+  const { close, isOpenModal, selectedCell, cellClick } = useTrackModal()
+
+  useEvent('cellClick', cellClick)
 
   const { formData, handleInputChange, handleSubmit } = useAddTrackToCell({
     trackCreate,

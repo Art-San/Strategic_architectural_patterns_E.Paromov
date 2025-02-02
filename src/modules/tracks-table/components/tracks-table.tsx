@@ -12,7 +12,7 @@ import { useTracksTasks } from '../hooks/use-tracks-tasks'
 import { useTableComputing } from '../hooks/use-table-comuting'
 import { TableLayout } from './table-layout'
 import { ActionButton } from './action-button'
-import { useTrackModal } from '@/interfaces/tracks-modal-context'
+import { globalEventEmmiter } from '@/interfaces/event-emmiter'
 
 export const TracksTable = () => {
   const { trackDelete, tracks } = useTracks()
@@ -27,7 +27,23 @@ export const TracksTable = () => {
   const { getDayTotal, getDayTracks, getTaskTotal, getTotal } =
     useTableComputing({ tracks: filteredTracks })
 
-  const { cellClick, createClick, trackClick } = useTrackModal()
+  // const { cellClick, createClick, trackClick } = useTrackModal()
+
+  const cellClick = globalEventEmmiter.emit.bind(
+    globalEventEmmiter,
+    'cellClick'
+  )
+
+  const createClick = globalEventEmmiter.emit.bind(
+    globalEventEmmiter,
+    'createClick'
+  )
+
+  const trackClick = globalEventEmmiter.emit.bind(
+    globalEventEmmiter,
+    'trackClick'
+  )
+
   return (
     <TableLayout>
       <TracksFilters

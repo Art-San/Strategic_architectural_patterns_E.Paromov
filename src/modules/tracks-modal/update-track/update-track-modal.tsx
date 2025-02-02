@@ -1,16 +1,18 @@
 import { Track } from '../shared/types'
 import { TrackForm } from '../shared/track-form'
 import { TrackModalView } from '../shared/track-modal'
-import { useTrackModalContext } from '../shared/track-modal-context'
 import { useUpdateTrackForm } from './use-update-track-form'
+import { useTrackModal } from '../shared/use-track-modal'
+import { useEvent } from '@/interfaces/event-emmiter'
 
 export function UpdateTrackModal({
   trackUpdate
 }: {
   trackUpdate: (track: Track) => Promise<void>
 }) {
-  const { close, isOpenModal, selectedTrack } = useTrackModalContext()
+  const { close, isOpenModal, selectedTrack, trackClick } = useTrackModal()
 
+  useEvent('trackClick', trackClick)
   const { formData, handleInputChange, handleSubmit } = useUpdateTrackForm({
     selectedTrack,
     trackUpdate,

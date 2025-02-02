@@ -5,12 +5,11 @@ import { TaskTracking } from './task-tracking'
 import { NewTaskForm } from './new-task-form'
 import { TaskFilters } from './task-filters'
 import { TaskItem } from './task-item'
-import { useTrackModal } from '@/interfaces/tracks-modal-context'
 import { useNewTask } from '../hooks/use-new-task'
 import { useTasks } from '../hooks/use-tasks'
+import { globalEventEmmiter } from '@/interfaces/event-emmiter'
 
 export const TaskList: React.FC = () => {
-  const { cellClick } = useTrackModal()
   const { tasks, addTask, deleteTask, toggleDone } = useTasks()
   const { filteredTasks, filters } = useTasksFilters({
     tasks
@@ -26,7 +25,7 @@ export const TaskList: React.FC = () => {
     tracking
   } = useTaskTrack({
     onTrack: ({ hours, task, startAt }) => {
-      cellClick({
+      globalEventEmmiter.emit('cellClick', {
         day: startAt.getDate(),
         selectedMonth: startAt.getMonth(),
         selectedYear: startAt.getFullYear(),
