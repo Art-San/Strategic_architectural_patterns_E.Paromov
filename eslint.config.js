@@ -31,8 +31,8 @@ export default tseslint.config(
     settings: {
       'boundaries/elements': [
         {
-          type: 'router',
-          pattern: 'router'
+          type: 'app',
+          pattern: 'app'
         },
         {
           type: 'modules',
@@ -61,7 +61,7 @@ export default tseslint.config(
               allow: 'index.ts'
             },
             {
-              target: ['interfaces'],
+              target: ['interfaces', 'app'],
               allow: '*'
             }
           ]
