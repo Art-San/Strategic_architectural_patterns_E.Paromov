@@ -3,7 +3,7 @@ import { TrackForm } from '../shared/track-form'
 import { TrackModalView } from '../shared/track-modal'
 import { useUpdateTrackForm } from './use-update-track-form'
 import { useTrackModal } from '../shared/use-track-modal'
-import { useEvent } from '@/interfaces/event-emmiter'
+import { globalEventEmmiter } from '@/interfaces/events'
 
 export function UpdateTrackModal({
   trackUpdate
@@ -12,7 +12,7 @@ export function UpdateTrackModal({
 }) {
   const { close, isOpenModal, selectedTrack, trackClick } = useTrackModal()
 
-  useEvent('trackClick', trackClick)
+  globalEventEmmiter.useEvent('trackClick', trackClick)
   const { formData, handleInputChange, handleSubmit } = useUpdateTrackForm({
     selectedTrack,
     trackUpdate,

@@ -42,6 +42,10 @@ export default tseslint.config(
         {
           type: 'interfaces',
           pattern: 'interfaces/*'
+        },
+        {
+          type: 'shared',
+          pattern: 'shared/*'
         }
       ],
       'import/resolver': {
@@ -57,12 +61,16 @@ export default tseslint.config(
           default: 'disallow',
           rules: [
             {
-              target: ['modules', 'router'],
+              target: ['modules'],
               allow: 'index.ts'
             },
             {
               target: ['interfaces', 'app'],
               allow: '*'
+            },
+            {
+              target: ['shared'],
+              allow: ['*', '*/index.ts']
             }
           ]
         }
@@ -74,12 +82,16 @@ export default tseslint.config(
           default: 'allow',
           rules: [
             {
-              from: ['interfaces'],
-              disallow: ['router', 'modules']
+              from: ['modules'],
+              disallow: ['app']
             },
             {
-              from: ['modules'],
-              disallow: ['router']
+              from: ['interfaces'],
+              disallow: ['app', 'modules']
+            },
+            {
+              from: ['shared'],
+              disallow: ['interfaces', 'modules', 'app']
             },
             {
               from: ['modules'],

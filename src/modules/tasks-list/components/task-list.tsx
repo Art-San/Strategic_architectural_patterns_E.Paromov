@@ -7,7 +7,7 @@ import { TaskFilters } from './task-filters'
 import { TaskItem } from './task-item'
 import { useNewTask } from '../hooks/use-new-task'
 import { useTasks } from '../hooks/use-tasks'
-import { globalEventEmmiter } from '@/interfaces/event-emmiter'
+import { globalEventEmmiter } from '@/interfaces/events'
 
 export const TaskList: React.FC = () => {
   const { tasks, addTask, deleteTask, toggleDone } = useTasks()

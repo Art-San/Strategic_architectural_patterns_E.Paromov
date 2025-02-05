@@ -1,3 +1,5 @@
+import { EventEmmiter } from '@/shared/event-emmiter'
+
 export type SelectedCell = {
   day: number
   task: string
@@ -19,3 +21,7 @@ export type TracksModalEvents = {
   trackClick: Track
   createClick: void
 }
+
+type GlobalEvents = TracksModalEvents
+
+export const globalEventEmmiter = new EventEmmiter<GlobalEvents>()

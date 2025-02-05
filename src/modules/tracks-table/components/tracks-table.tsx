@@ -12,7 +12,7 @@ import { useTracksTasks } from '../hooks/use-tracks-tasks'
 import { useTableComputing } from '../hooks/use-table-comuting'
 import { TableLayout } from './table-layout'
 import { ActionButton } from './action-button'
-import { globalEventEmmiter } from '@/interfaces/event-emmiter'
+import { globalEventEmmiter } from '@/interfaces/events'
 
 export const TracksTable = () => {
   const { trackDelete, tracks } = useTracks()
@@ -29,20 +29,11 @@ export const TracksTable = () => {
 
   // const { cellClick, createClick, trackClick } = useTrackModal()
 
-  const cellClick = globalEventEmmiter.emit.bind(
-    globalEventEmmiter,
-    'cellClick'
-  )
+  const cellClick = globalEventEmmiter.bindEmit('cellClick')
 
-  const createClick = globalEventEmmiter.emit.bind(
-    globalEventEmmiter,
-    'createClick'
-  )
+  const createClick = globalEventEmmiter.bindEmit('createClick')
 
-  const trackClick = globalEventEmmiter.emit.bind(
-    globalEventEmmiter,
-    'trackClick'
-  )
+  const trackClick = globalEventEmmiter.bindEmit('trackClick')
 
   return (
     <TableLayout>

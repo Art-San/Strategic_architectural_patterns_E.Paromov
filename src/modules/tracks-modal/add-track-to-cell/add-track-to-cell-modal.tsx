@@ -3,7 +3,7 @@ import { TrackForm } from '../shared/track-form'
 import { TrackModalView } from '../shared/track-modal'
 import { useAddTrackToCell } from './use-add-track-to-cell'
 import { useTrackModal } from '../shared/use-track-modal'
-import { useEvent } from '@/interfaces/event-emmiter'
+import { globalEventEmmiter } from '@/interfaces/events'
 
 export function AddTrackToCellModal({
   trackCreate
@@ -12,7 +12,7 @@ export function AddTrackToCellModal({
 }) {
   const { close, isOpenModal, selectedCell, cellClick } = useTrackModal()
 
-  useEvent('cellClick', cellClick)
+  globalEventEmmiter.useEvent('cellClick', cellClick)
 
   const { formData, handleInputChange, handleSubmit } = useAddTrackToCell({
     trackCreate,
