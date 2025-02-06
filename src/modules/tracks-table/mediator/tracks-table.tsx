@@ -1,18 +1,19 @@
-import { TracksActions } from './tracks-actions'
-import { TracksCell } from './tracks-cell'
-import { TracksTaskRow } from './tracks-task-row'
-import { TableTrack } from './table-track'
-import { TracksSummaryRow } from './tracks-summary-row'
-import { TracksDayHeadCell } from './tracks-day-head-cell'
-import { TracksTableLayout } from './tracks-table-layout'
+import { TracksActions } from '../components/tracks-actions'
+import { TracksCell } from '../components/tracks-cell'
+import { TracksTaskRow } from '../components/tracks-task-row'
+import { TableTrack } from '../components/table-track'
+import { TracksSummaryRow } from '../components/tracks-summary-row'
+import { TracksDayHeadCell } from '../components/tracks-day-head-cell'
+import { TracksTableLayout } from '../components/tracks-table-layout'
 import { useTracks } from '../hooks/use-tracks'
 import { useTracksFilter } from '../hooks/use-tracks-filter'
-import { TracksFilters } from './tracks-filters'
+import { TracksFilters } from '../components/tracks-filters'
 import { useTracksTasks } from '../hooks/use-tracks-tasks'
 import { useTableComputing } from '../hooks/use-table-comuting'
-import { TableLayout } from './table-layout'
-import { ActionButton } from './action-button'
+import { TableLayout } from '../components/table-layout'
+
 import { globalEventEmmiter } from '@/interfaces/events'
+import { UiButton } from '@/shared/ui/button'
 
 export const TracksTable = () => {
   const { trackDelete, tracks } = useTracks()
@@ -40,7 +41,8 @@ export const TracksTable = () => {
       <TracksFilters
         {...filters}
         {...setFilters}
-        actions={<ActionButton onClick={createClick}>Add Track</ActionButton>}
+        actions={<UiButton onClick={() => createClick()}>Add Track</UiButton>}
+        // actions={<ActionButton onClick={createClick}>Add Track</ActionButton>}
       />
 
       <TracksTableLayout

@@ -1,3 +1,4 @@
+import { UiButton } from '@/shared/ui/button'
 import { Track } from '../shared/types'
 import styles from './track-form.module.css'
 
@@ -78,17 +79,28 @@ export function TrackForm({
       </div>
 
       <div className={styles.buttonGroup}>
-        <button type="submit" className={styles.button}>
+        <UiButton type="submit">{submitText}</UiButton>
+        {/* <button type="submit" className={styles.button}>
           {submitText}
-        </button>
-        <button
+        </button> */}
+        <UiButton
+          type="button"
+          color="secondary"
+          onClick={() => {
+            console.log(12, 'klick')
+            onCancel()
+          }}
+        >
+          Cancel
+        </UiButton>
+        {/* <button
           type="button"
           className={styles.button}
           onClick={() => onCancel()}
           style={{ backgroundColor: '#6c757d' }}
         >
           Cancel
-        </button>
+        </button> */}
       </div>
     </form>
   )

@@ -65,7 +65,7 @@ export default tseslint.config(
               allow: 'index.ts'
             },
             {
-              target: ['interfaces', 'app'],
+              target: ['interfaces', 'app', 'shared'],
               allow: '*'
             },
             {
