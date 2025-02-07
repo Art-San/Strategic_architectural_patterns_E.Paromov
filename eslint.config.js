@@ -35,9 +35,14 @@ export default tseslint.config(
           pattern: 'app'
         },
         {
-          type: 'modules',
-          pattern: 'modules/*',
-          capture: ['module']
+          type: 'pages',
+          pattern: 'pages/*',
+          capture: ['page']
+        },
+        {
+          type: 'widgets',
+          pattern: 'widgets/*',
+          capture: ['widget']
         },
         {
           type: 'interfaces',
@@ -61,11 +66,11 @@ export default tseslint.config(
           default: 'disallow',
           rules: [
             {
-              target: ['modules'],
+              target: ['pages', 'widgets'],
               allow: 'index.ts'
             },
             {
-              target: ['interfaces', 'app', 'shared'],
+              target: ['interfaces', 'app'],
               allow: '*'
             },
             {
@@ -82,25 +87,41 @@ export default tseslint.config(
           default: 'allow',
           rules: [
             {
-              from: ['modules'],
+              from: ['pages'],
               disallow: ['app']
             },
             {
+              from: 'widgets',
+              disallow: ['app', 'pages']
+            },
+            {
               from: ['interfaces'],
-              disallow: ['app', 'modules']
+              disallow: ['app', 'pages', 'widgets']
             },
             {
               from: ['shared'],
-              disallow: ['interfaces', 'modules', 'app']
+              disallow: ['app', 'pages', 'widgets', 'interfaces']
             },
             {
-              from: ['modules'],
+              from: ['pages'],
               message: 'Module must not import other module',
               disallow: [
                 [
-                  'modules',
+                  'pages',
                   {
-                    module: '!${module}'
+                    module: '!${page}'
+                  }
+                ]
+              ]
+            },
+            {
+              from: ['widgets'],
+              message: 'Module must not import other module',
+              disallow: [
+                [
+                  'widgets',
+                  {
+                    module: '!${widget}'
                   }
                 ]
               ]

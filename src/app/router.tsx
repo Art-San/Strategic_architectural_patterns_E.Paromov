@@ -1,10 +1,6 @@
 import { createBrowserRouter, redirect } from 'react-router-dom'
-import {
-  TracksTable,
-  TracksApiProvider,
-  tracksApi
-} from '@/modules/tracks-table'
-import { TaskList } from '@/modules/tasks-list'
+import { TracksTable, TracksApiProvider, tracksApi } from '@/pages/tracks-table'
+import { TaskList } from '@/pages/tasks-list'
 import { Layout } from './components/layout'
 
 export const router = createBrowserRouter([

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { SelectedCell } from './types'
-import { Track } from '../shared/types'
+import { Track } from './types'
 
 export function useTrackModal() {
   const [isCreate, setIsCreate] = useState(false)

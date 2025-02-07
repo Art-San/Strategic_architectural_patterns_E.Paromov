@@ -1,5 +1,5 @@
 import { UiButton } from '@/shared/ui/button'
-import { Track } from '../shared/types'
+import { Track } from './types'
 import styles from './track-form.module.css'
 
 export function TrackForm({
