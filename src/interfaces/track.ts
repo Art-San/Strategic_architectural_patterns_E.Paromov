@@ -1,4 +1,4 @@
-export type SelectedCell = {
+export type TrackCreateParams = {
   day: number
   task: string
   selectedMonth: number

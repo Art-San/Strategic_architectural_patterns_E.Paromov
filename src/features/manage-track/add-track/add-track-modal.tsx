@@ -1,39 +1,35 @@
-import { Track } from '../shared/types'
+import { Track } from '@/interfaces/track'
 import { TrackForm } from '../shared/track-form'
 import { TrackModalView } from '../shared/track-modal'
-import { useAddTrackToCell } from './use-add-track-to-cell'
+
 import { useTrackModal } from '../shared/use-track-modal'
+import { useAddTrackForm } from './use-add-track-form'
 import { globalEventEmmiter } from '@/interfaces/events'
 
-export function AddTrackToCellModal({
+export function AddTrackModal({
   trackCreate
 }: {
   trackCreate: (track: Omit<Track, 'id'>) => Promise<void>
 }) {
-  const { close, isOpenModal, selectedCell, cellClick } = useTrackModal()
+  const { close, isOpenModal, createClick } = useTrackModal()
 
-  globalEventEmmiter.useEvent('cellClick', cellClick)
+  globalEventEmmiter.useEvent('createTrack', createClick)
 
-  const { formData, handleInputChange, handleSubmit } = useAddTrackToCell({
+  const { formData, handleInputChange, handleSubmit } = useAddTrackForm({
     trackCreate,
-    onSubmit: close,
-    selectedCell
+    onSubmit: close
   })
 
   if (!isOpenModal) return null
 
   return (
-    <TrackModalView title="Add Track to Cell" close={close}>
+    <TrackModalView title="Add Track" close={close}>
       <TrackForm
         formData={formData}
         onInputChange={handleInputChange}
         onSubmit={handleSubmit}
         onCancel={close}
         submitText="Add Track"
-        disabled={{
-          date: true,
-          task: true
-        }}
       />
     </TrackModalView>
   )

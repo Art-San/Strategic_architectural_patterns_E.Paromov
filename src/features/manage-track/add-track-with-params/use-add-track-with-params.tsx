@@ -1,16 +1,15 @@
 import { useEffect } from 'react'
-import { Track } from '../shared/types'
 import { useFormData } from '../shared/use-form-data'
-import { SelectedCell } from '../shared/types'
+import { Track, TrackCreateParams } from '@/interfaces/track'
 
-export function useAddTrackToCell({
+export function useAddTrackWithParams({
   trackCreate,
   onSubmit,
   selectedCell
 }: {
   trackCreate: (track: Omit<Track, 'id'>) => Promise<void>
   onSubmit?: () => void
-  selectedCell: SelectedCell | null
+  selectedCell: TrackCreateParams | null
 }) {
   const { formData, handleInputChange, resetFormData, setFormData } =
     useFormData()

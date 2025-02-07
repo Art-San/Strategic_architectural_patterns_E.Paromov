@@ -1,25 +1,10 @@
 import { EventEmmiter } from '@/shared/event-emmiter'
-
-export type SelectedCell = {
-  day: number
-  task: string
-  selectedMonth: number
-  selectedYear: number
-  hours?: number
-}
-
-export type Track = {
-  id: string
-  name: string
-  task: string
-  hours: number
-  date: string
-}
+import { Track, TrackCreateParams } from './track'
 
 export type TracksModalEvents = {
-  cellClick: SelectedCell
-  trackClick: Track
-  createClick: void
+  createTrackWithParams: TrackCreateParams
+  trackUpdate: Track
+  createTrack: void
 }
 
 type GlobalEvents = TracksModalEvents

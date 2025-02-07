@@ -1,4 +1,4 @@
-export { AddTrackToCellModal } from './add-track-to-cell/add-track-to-cell-modal'
+export { AddTrackWithParamsModal } from './add-track-with-params/add-track-with-params'
 export { AddTrackModal } from './add-track/add-track-modal'
 export { UpdateTrackModal } from './update-track/update-track-modal'
 // export { TrackModalProvider } from './shared/track-modal-provider'

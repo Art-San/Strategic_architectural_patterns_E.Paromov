@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
-import { Track } from '../shared/types'
+
 import { useFormData } from '../shared/use-form-data'
+import { Track } from '@/interfaces/track'
 
 export function useUpdateTrackForm({
   selectedTrack,

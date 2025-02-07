@@ -40,9 +40,9 @@ export default tseslint.config(
           capture: ['page']
         },
         {
-          type: 'widgets',
-          pattern: 'widgets/*',
-          capture: ['widget']
+          type: 'features',
+          pattern: 'features/*',
+          capture: ['features']
         },
         {
           type: 'interfaces',
@@ -66,7 +66,7 @@ export default tseslint.config(
           default: 'disallow',
           rules: [
             {
-              target: ['pages', 'widgets'],
+              target: ['pages', 'features'],
               allow: 'index.ts'
             },
             {
@@ -91,16 +91,16 @@ export default tseslint.config(
               disallow: ['app']
             },
             {
-              from: 'widgets',
+              from: 'features',
               disallow: ['app', 'pages']
             },
             {
               from: ['interfaces'],
-              disallow: ['app', 'pages', 'widgets']
+              disallow: ['app', 'pages', 'features']
             },
             {
               from: ['shared'],
-              disallow: ['app', 'pages', 'widgets', 'interfaces']
+              disallow: ['app', 'pages', 'features', 'interfaces']
             },
             {
               from: ['pages'],
@@ -115,11 +115,11 @@ export default tseslint.config(
               ]
             },
             {
-              from: ['widgets'],
+              from: ['features'],
               message: 'Module must not import other module',
               disallow: [
                 [
-                  'widgets',
+                  'features',
                   {
                     module: '!${widget}'
                   }
