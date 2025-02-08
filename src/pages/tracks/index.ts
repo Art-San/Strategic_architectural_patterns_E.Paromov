@@ -1,1 +1,1 @@
-// export { TracksTablePage } from "./components/page"
+export { TracksTablePage } from './components/page'

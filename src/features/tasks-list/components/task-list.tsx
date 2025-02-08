@@ -25,7 +25,7 @@ export const TaskList: React.FC = () => {
     tracking
   } = useTaskTrack({
     onTrack: ({ hours, task, startAt }) => {
-      globalEventEmmiter.emit('cellClick', {
+      globalEventEmmiter.emit('createTrackWithParams', {
         day: startAt.getDate(),
         selectedMonth: startAt.getMonth(),
         selectedYear: startAt.getFullYear(),

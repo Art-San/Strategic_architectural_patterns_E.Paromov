@@ -10,7 +10,6 @@ import { useTracksFilter } from '../hooks/use-tracks-filter'
 import { TracksFilters } from '../components/tracks-filters'
 import { useTracksTasks } from '../hooks/use-tracks-tasks'
 import { useTableComputing } from '../hooks/use-table-comuting'
-import { TableLayout } from '../components/table-layout'
 
 import { globalEventEmmiter } from '@/interfaces/events'
 import { UiButton } from '@/shared/ui/button'
@@ -30,14 +29,14 @@ export const TracksTable = () => {
 
   // const { cellClick, createClick, trackClick } = useTrackModal()
 
-  const cellClick = globalEventEmmiter.bindEmit('cellClick')
+  const cellClick = globalEventEmmiter.bindEmit('createTrackWithParams')
 
-  const createClick = globalEventEmmiter.bindEmit('createClick')
+  const createClick = globalEventEmmiter.bindEmit('createTrack')
 
-  const trackClick = globalEventEmmiter.bindEmit('trackClick')
+  const trackClick = globalEventEmmiter.bindEmit('trackUpdate')
 
   return (
-    <TableLayout>
+    <>
       <TracksFilters
         {...filters}
         {...setFilters}
@@ -100,6 +99,6 @@ export const TracksTable = () => {
           />
         }
       />
-    </TableLayout>
+    </>
   )
 }
