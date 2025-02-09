@@ -1,4 +1,4 @@
-import { Track } from '../hooks/use-tracks'
+import { Track } from '@/interfaces/track'
 import styles from './tracks-cell.module.css'
 
 export function TracksCell({

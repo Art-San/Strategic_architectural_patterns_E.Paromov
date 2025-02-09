@@ -1,12 +1,12 @@
-import { Track } from "../hooks/use-tracks";
-import styles from "./table-track.module.css";
+import { Track } from '@/interfaces/track'
+import styles from './table-track.module.css'
 
 export function TableTrack({
   track,
-  actions,
+  actions
 }: {
-  track: Track;
-  actions: React.ReactNode;
+  track: Track
+  actions: React.ReactNode
 }) {
   return (
     <div className={styles.track}>
@@ -16,5 +16,5 @@ export function TableTrack({
       </div>
       <div className={styles.trackActions}>{actions}</div>
     </div>
-  );
+  )
 }

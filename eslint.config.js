@@ -42,7 +42,12 @@ export default tseslint.config(
         {
           type: 'features',
           pattern: 'features/*',
-          capture: ['features']
+          capture: ['feature']
+        },
+        {
+          type: 'services',
+          pattern: 'services/*',
+          capture: ['service']
         },
         {
           type: 'interfaces',
@@ -66,7 +71,7 @@ export default tseslint.config(
           default: 'disallow',
           rules: [
             {
-              target: ['pages', 'features'],
+              target: ['pages', 'features', 'services'],
               allow: 'index.ts'
             },
             {
@@ -95,12 +100,16 @@ export default tseslint.config(
               disallow: ['app', 'pages']
             },
             {
-              from: ['interfaces'],
+              from: ['services'],
               disallow: ['app', 'pages', 'features']
             },
             {
+              from: ['interfaces'],
+              disallow: ['app', 'pages', 'features', 'services']
+            },
+            {
               from: ['shared'],
-              disallow: ['app', 'pages', 'features', 'interfaces']
+              disallow: ['app', 'pages', 'features', 'interfaces', 'services']
             },
             {
               from: ['pages'],
@@ -121,7 +130,7 @@ export default tseslint.config(
                 [
                   'features',
                   {
-                    module: '!${widget}'
+                    module: '!${feature}'
                   }
                 ]
               ]

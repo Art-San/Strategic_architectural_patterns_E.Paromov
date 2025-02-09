@@ -1,36 +1,10 @@
 import { nanoid } from 'nanoid'
 import { useEffect, useSyncExternalStore } from 'react'
 import { useTracksApi } from './tracks-api-context'
+import { Track } from '@/interfaces/track'
+import { createGlobalStore } from '@/shared/global-store'
 
-export interface Track {
-  id: string
-  name: string
-  task: string
-  hours: number
-  date: string
-}
-
-const tracksStore = {
-  value: [] as Track[],
-
-  listeners: [] as (() => void)[],
-  getSnapshot: () => {
-    return tracksStore.value
-  },
-  subscribe: (callback: () => void): (() => void) => {
-    tracksStore.listeners.push(callback)
-    return () => {
-      tracksStore.listeners = tracksStore.listeners.filter(
-        (listener) => listener !== callback
-      )
-    }
-  },
-
-  setTracks: (tracks: Track[]) => {
-    tracksStore.value = tracks
-    tracksStore.listeners.forEach((listener) => listener())
-  }
-}
+const tracksStore = createGlobalStore<Track[]>([])
 
 export function useTracks({ shouldFetch = true } = {}) {
   const api = useTracksApi()
@@ -48,7 +22,7 @@ export function useTracks({ shouldFetch = true } = {}) {
 
   const fetchTracks = async () => {
     const data = await api.fetchTracks()
-    tracksStore.setTracks(data)
+    tracksStore.set(data)
   }
 
   const trackDelete = async (trackId: string) => {

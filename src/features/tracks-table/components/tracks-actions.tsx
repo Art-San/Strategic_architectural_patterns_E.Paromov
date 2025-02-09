@@ -1,4 +1,4 @@
-import { Track } from '../hooks/use-tracks'
+import { Track } from '@/interfaces/track'
 import styles from './tracks-actions.module.css'
 
 export function TracksActions({

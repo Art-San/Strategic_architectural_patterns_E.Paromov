@@ -1,19 +1,16 @@
-import { Track } from '@/interfaces/track'
 import { TrackForm } from '../shared/track-form'
 import { TrackModalView } from '../shared/track-modal'
 
 import { useTrackModal } from '../shared/use-track-modal'
 import { useAddTrackForm } from './use-add-track-form'
 import { globalEventEmmiter } from '@/interfaces/events'
+import { useTracks } from '@/services/track'
 
-export function AddTrackModal({
-  trackCreate
-}: {
-  trackCreate: (track: Omit<Track, 'id'>) => Promise<void>
-}) {
+export function AddTrackModal() {
   const { close, isOpenModal, createClick } = useTrackModal()
-
   globalEventEmmiter.useEvent('createTrack', createClick)
+
+  const { trackCreate } = useTracks({ shouldFetch: false })
 
   const { formData, handleInputChange, handleSubmit } = useAddTrackForm({
     trackCreate,

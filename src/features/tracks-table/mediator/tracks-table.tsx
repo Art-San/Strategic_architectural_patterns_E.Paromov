@@ -5,7 +5,6 @@ import { TableTrack } from '../components/table-track'
 import { TracksSummaryRow } from '../components/tracks-summary-row'
 import { TracksDayHeadCell } from '../components/tracks-day-head-cell'
 import { TracksTableLayout } from '../components/tracks-table-layout'
-import { useTracks } from '../hooks/use-tracks'
 import { useTracksFilter } from '../hooks/use-tracks-filter'
 import { TracksFilters } from '../components/tracks-filters'
 import { useTracksTasks } from '../hooks/use-tracks-tasks'
@@ -13,6 +12,7 @@ import { useTableComputing } from '../hooks/use-table-comuting'
 
 import { globalEventEmmiter } from '@/interfaces/events'
 import { UiButton } from '@/shared/ui/button'
+import { useTracks } from '@/services/track'
 
 export const TracksTable = () => {
   const { trackDelete, tracks } = useTracks()

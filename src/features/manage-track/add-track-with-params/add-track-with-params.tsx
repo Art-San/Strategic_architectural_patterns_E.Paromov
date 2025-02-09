@@ -3,15 +3,11 @@ import { TrackModalView } from '../shared/track-modal'
 import { useAddTrackWithParams } from './use-add-track-with-params'
 import { useTrackModal } from '../shared/use-track-modal'
 import { globalEventEmmiter } from '@/interfaces/events'
-import { Track } from '@/interfaces/track'
+import { useTracks } from '@/services/track'
 
-export function AddTrackWithParamsModal({
-  trackCreate
-}: {
-  trackCreate: (track: Omit<Track, 'id'>) => Promise<void>
-}) {
+export function AddTrackWithParamsModal() {
+  const { trackCreate } = useTracks({ shouldFetch: false })
   const { close, isOpenModal, selectedCell, cellClick } = useTrackModal()
-
   globalEventEmmiter.useEvent('createTrackWithParams', cellClick)
 
   const { formData, handleInputChange, handleSubmit } = useAddTrackWithParams({

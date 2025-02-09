@@ -1,9 +1,14 @@
 import { createBrowserRouter, redirect } from 'react-router-dom'
-import { TracksApiProvider, tracksApi } from '@/features/tracks-table'
 
 import { Layout } from './components/layout'
 import { TaskListPage } from '@/pages/tasks'
 import { TracksTablePage } from '@/pages/tracks'
+import {
+  AddTrackModal,
+  AddTrackWithParamsModal,
+  UpdateTrackModal
+} from '@/features/manage-track'
+import { TracksApiProvider, tracksApi } from '@/services/track'
 
 export const router = createBrowserRouter([
   {
@@ -11,6 +16,9 @@ export const router = createBrowserRouter([
     element: (
       <TracksApiProvider value={tracksApi}>
         <Layout />
+        <AddTrackModal />
+        <UpdateTrackModal />
+        <AddTrackWithParamsModal />
       </TracksApiProvider>
     ),
     children: [

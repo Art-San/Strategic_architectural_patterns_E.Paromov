@@ -3,13 +3,10 @@ import { TrackModalView } from '../shared/track-modal'
 import { useUpdateTrackForm } from './use-update-track-form'
 import { useTrackModal } from '../shared/use-track-modal'
 import { globalEventEmmiter } from '@/interfaces/events'
-import { Track } from '@/interfaces/track'
+import { useTracks } from '@/services/track'
 
-export function UpdateTrackModal({
-  trackUpdate
-}: {
-  trackUpdate: (track: Track) => Promise<void>
-}) {
+export function UpdateTrackModal() {
+  const { trackUpdate } = useTracks({ shouldFetch: false })
   const { close, isOpenModal, selectedTrack, trackClick } = useTrackModal()
 
   globalEventEmmiter.useEvent('trackUpdate', trackClick)
