@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid'
 import { useEffect, useSyncExternalStore } from 'react'
 import { useTracksApi } from './tracks-api-context'
-import { Track } from '@/interfaces/track'
+import { Track } from '@/kernel/track'
 import { createGlobalStore } from '@/shared/global-store'
 
 const tracksStore = createGlobalStore<Track[]>([])

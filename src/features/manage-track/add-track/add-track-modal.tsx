@@ -3,7 +3,7 @@ import { TrackModalView } from '../shared/track-modal'
 
 import { useTrackModal } from '../shared/use-track-modal'
 import { useAddTrackForm } from './use-add-track-form'
-import { globalEventEmmiter } from '@/interfaces/events'
+import { globalEventEmmiter } from '@/kernel/events'
 import { useTracks } from '@/services/track'
 
 export function AddTrackModal() {

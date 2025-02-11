@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useFormData } from '../shared/use-form-data'
-import { Track, TrackCreateParams } from '@/interfaces/track'
+import { Track, TrackCreateParams } from '@/kernel/track'
 
 export function useAddTrackWithParams({
   trackCreate,

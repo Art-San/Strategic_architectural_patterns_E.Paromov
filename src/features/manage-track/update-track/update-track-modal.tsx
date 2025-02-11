@@ -2,7 +2,7 @@ import { TrackForm } from '../shared/track-form'
 import { TrackModalView } from '../shared/track-modal'
 import { useUpdateTrackForm } from './use-update-track-form'
 import { useTrackModal } from '../shared/use-track-modal'
-import { globalEventEmmiter } from '@/interfaces/events'
+import { globalEventEmmiter } from '@/kernel/events'
 import { useTracks } from '@/services/track'
 
 export function UpdateTrackModal() {

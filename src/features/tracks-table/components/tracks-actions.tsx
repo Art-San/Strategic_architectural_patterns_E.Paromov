@@ -1,4 +1,4 @@
-import { Track } from '@/interfaces/track'
+import { Track } from '@/kernel/track'
 import styles from './tracks-actions.module.css'
 
 export function TracksActions({

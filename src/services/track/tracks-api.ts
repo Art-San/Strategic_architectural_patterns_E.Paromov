@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid'
 import { TrackApi } from './tracks-api-context'
-import { Track } from '@/interfaces/track'
+import { Track } from '@/kernel/track'
 
 export const tracksApi: TrackApi = {
   fetchTracks: () => {

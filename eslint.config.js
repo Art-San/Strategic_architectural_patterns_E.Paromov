@@ -50,8 +50,8 @@ export default tseslint.config(
           capture: ['service']
         },
         {
-          type: 'interfaces',
-          pattern: 'interfaces/*'
+          type: 'kernel',
+          pattern: 'kernel/*'
         },
         {
           type: 'shared',
@@ -75,7 +75,7 @@ export default tseslint.config(
               allow: 'index.ts'
             },
             {
-              target: ['interfaces', 'app'],
+              target: ['kernel', 'app'],
               allow: '*'
             },
             {
@@ -104,12 +104,12 @@ export default tseslint.config(
               disallow: ['app', 'pages', 'features']
             },
             {
-              from: ['interfaces'],
+              from: ['kernel'],
               disallow: ['app', 'pages', 'features', 'services']
             },
             {
               from: ['shared'],
-              disallow: ['app', 'pages', 'features', 'interfaces', 'services']
+              disallow: ['app', 'pages', 'features', 'kernel', 'services']
             },
             {
               from: ['pages'],

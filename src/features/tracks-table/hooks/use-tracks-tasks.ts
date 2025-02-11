@@ -1,4 +1,4 @@
-import { Track } from '@/interfaces/track'
+import { Track } from '@/kernel/track'
 import { useMemo } from 'react'
 
 export function useTracksTasks({ tracks }: { tracks: Track[] }) {

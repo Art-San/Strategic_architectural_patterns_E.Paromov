@@ -1,4 +1,4 @@
-import { Track } from '@/interfaces/track'
+import { Track } from '@/kernel/track'
 
 export function useTableComputing({ tracks }: { tracks: Track[] }) {
   const getDayTracks = (day: number, task: string) => {

@@ -1,4 +1,4 @@
-// import { TrackModalProvider as TrackModalProviderGlobal } from '@/interfaces/tracks-modal-context'
+// import { TrackModalProvider as TrackModalProviderGlobal } from '@/kernel/tracks-modal-context'
 // import { trackModalContext } from './track-modal-context'
 // import { useTrackModal } from './use-track-modal'
 

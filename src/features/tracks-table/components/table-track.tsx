@@ -1,4 +1,4 @@
-import { Track } from '@/interfaces/track'
+import { Track } from '@/kernel/track'
 import styles from './table-track.module.css'
 
 export function TableTrack({

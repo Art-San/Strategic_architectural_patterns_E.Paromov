@@ -1,4 +1,4 @@
-import { Track } from '@/interfaces/track'
+import { Track } from '@/kernel/track'
 import { useFormData } from '../shared/use-form-data'
 
 export function useAddTrackForm({

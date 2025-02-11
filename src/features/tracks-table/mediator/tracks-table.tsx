@@ -10,9 +10,9 @@ import { TracksFilters } from '../components/tracks-filters'
 import { useTracksTasks } from '../hooks/use-tracks-tasks'
 import { useTableComputing } from '../hooks/use-table-comuting'
 
-import { globalEventEmmiter } from '@/interfaces/events'
 import { UiButton } from '@/shared/ui/button'
 import { useTracks } from '@/services/track'
+import { globalEventEmmiter } from '@/kernel/events'
 
 export const TracksTable = () => {
   const { trackDelete, tracks } = useTracks()
